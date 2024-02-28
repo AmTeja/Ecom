@@ -20,11 +20,15 @@ class Homepage extends StatelessWidget {
         title: const Text('Ecom'),
         actions: [
           Consumer(builder: (context, ref, child) {
+            final isList =
+                ref.watch(homepageControllerProvider).asData?.value ?? true;
             return IconButton(
                 onPressed: () {
                   ref.read(homepageControllerProvider.notifier).toggleView();
                 },
-                icon: const Icon(Icons.list));
+                icon: isList
+                    ? const Icon(Icons.list)
+                    : const Icon(Icons.grid_view));
           }),
           const _CartWithBadge(),
         ],
