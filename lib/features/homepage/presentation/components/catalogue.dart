@@ -16,11 +16,7 @@ class Catalogue extends ConsumerWidget {
       data: (data) => AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
           transitionBuilder: (child, animation) {
-            return SlideTransition(
-                position:
-                    Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero)
-                        .animate(animation),
-                child: child);
+            return ScaleTransition(scale: animation, child: child);
           },
           child: isList
               ? ListView.builder(
